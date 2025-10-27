@@ -1,5 +1,5 @@
 {
-  "item.phototaxis.jar": "jar",
+  "item.phototaxis.jar": "Jar",
   "item.phototaxis.lunar_totem": "Lunar Totem",
   "item.phototaxis.moth": "Moth",
   "item.phototaxis.moth.desc": "Wild",
@@ -11,6 +11,6 @@
   "phototaxis.midnightconfig.category.config": "Phototaxis",
   "phototaxis.midnightconfig.category.debug": "Debug",
   "phototaxis.midnightconfig.foglampVeilLight": "(Might remove) Veil light for Foglamp",
-  
+
   "text.foglamp.debug": "debug foglamp text"
 }
