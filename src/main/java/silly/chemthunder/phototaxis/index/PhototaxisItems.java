@@ -45,7 +45,6 @@ public interface PhototaxisItems {
             .fireproof()
     ));
 
-
     static <T extends Item> T create(String name, T item) {
         ITEMS.put(item, Phototaxis.id(name));
         return item;
