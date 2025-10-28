@@ -1,6 +1,8 @@
 package silly.chemthunder.phototaxis.index;
 
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.client.render.entity.EmptyEntityRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -12,6 +14,8 @@ import net.minecraft.registry.RegistryKeys;
 import silly.chemthunder.phototaxis.Phototaxis;
 import silly.chemthunder.phototaxis.object.entity.PylonEntity;
 import silly.chemthunder.phototaxis.object.entity.moths.MothEntity;
+import silly.chemthunder.phototaxis.object.entity.moths.client.MothEntityRenderer;
+import silly.chemthunder.phototaxis.object.entity.moths.client.MothModelEntity;
 
 public interface PhototaxisEntities {
 //    EntityType<MissileEntity> MISSILE_ENTITY = create(
@@ -45,10 +49,12 @@ public interface PhototaxisEntities {
 
     static void initialize() {
         // Entities are Registered Statically
+        FabricDefaultAttributeRegistry.register(MOTH, MothEntity.createAttribute());
     }
 
     static void clientInit() {
-        EntityRendererRegistry.register(MOTH, EmptyEntityRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(MothModelEntity.MOTH_MODEL, MothModelEntity::getTexturedModelData);
+        EntityRendererRegistry.register(MOTH, MothEntityRenderer::new);
         EntityRendererRegistry.register(PYLON, EmptyEntityRenderer::new);
     }
 }

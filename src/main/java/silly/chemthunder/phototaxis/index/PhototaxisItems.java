@@ -4,10 +4,12 @@ import net.acoyt.acornlib.api.item.AcornItemSettings;
 import net.fabricmc.fabric.api.item.v1.EquipmentSlotProvider;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import silly.chemthunder.phototaxis.Phototaxis;
+import silly.chemthunder.phototaxis.object.entity.moths.MothEntity;
 import silly.chemthunder.phototaxis.object.item.*;
 
 import java.util.LinkedHashMap;
@@ -44,6 +46,8 @@ public interface PhototaxisItems {
             .maxCount(1)
             .fireproof()
     ));
+
+    Item MOTH_SPAWN_EGG = create("moth_spawn_egg", new SpawnEggItem(PhototaxisEntities.MOTH, 0x4a3f20, 0x706034, new Item.Settings()));
 
     static <T extends Item> T create(String name, T item) {
         ITEMS.put(item, Phototaxis.id(name));

@@ -32,6 +32,7 @@ public interface PhototaxisItemGroups {
         itemGroup.add(PhototaxisItems.MOTH_PELT);
         itemGroup.add(PhototaxisItems.JAR);
         itemGroup.add(PhototaxisItems.LUNAR_TOTEM);
+        itemGroup.add(PhototaxisItems.MOTH_SPAWN_EGG);
 
 
         //testing

@@ -3,9 +3,13 @@
   "id": "phototaxis",
   "version": "${version}",
   "name": "Phototaxis",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Adds Moths to Minecraft: Silly, useful, and deadly!",
   "authors": [
-    "Me!"
+    "Chemthunder"
+  ],
+  "contributers": [
+    "Eyalego (Moth assets)",
+    "Vbinnie (Code help)"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
