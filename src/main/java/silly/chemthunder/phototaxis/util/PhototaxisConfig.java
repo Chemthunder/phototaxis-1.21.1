@@ -11,4 +11,7 @@ public class PhototaxisConfig extends MidnightConfig {
 
     @Entry(category = debug)
     public static boolean foglampVeilLight = false;
+
+    @Entry(category = debug)
+    public static boolean showMothNames = true;
 }

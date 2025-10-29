@@ -1,5 +1,6 @@
 {
   "entity.phototaxis.moth": "Moth",
+  "entity.phototaxis.moth_redhead": "Redheaded Moth",
 
   "item.phototaxis.jar": "Jar",
   "item.phototaxis.lunar_totem": "Lunar Totem",
@@ -13,6 +14,9 @@
   "phototaxis.midnightconfig.category.config": "Phototaxis",
   "phototaxis.midnightconfig.category.debug": "Debug",
   "phototaxis.midnightconfig.foglampVeilLight": "(Might remove) Veil light for Foglamp",
+  "phototaxis.midnightconfig.showMothNames": "Show names of nearby Moths",
 
-  "text.foglamp.debug": "debug foglamp text"
+  "text.foglamp.debug": "debug foglamp text",
+
+  "item.phototaxis.moth_spawn_egg": "Moth Spawn Egg"
 }

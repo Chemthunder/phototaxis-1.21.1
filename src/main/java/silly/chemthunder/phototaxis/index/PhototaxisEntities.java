@@ -34,6 +34,29 @@ public interface PhototaxisEntities {
             ).dimensions(0.6f, 0.3f)
     );
 
+    EntityType<MothEntity> MOTH_SATIN = create(
+            "satin_moth",
+            EntityType.Builder.create(
+                    MothEntity::new,
+                    SpawnGroup.CREATURE
+            ).dimensions(0.6f, 0.3f)
+    );
+
+    EntityType<MothEntity> MOTH_REDHEAD = create(
+            "redhead_moth",
+            EntityType.Builder.create(
+                    MothEntity::new,
+                    SpawnGroup.CREATURE
+            ).dimensions(0.6f, 0.3f)
+    );
+
+    EntityType<MothEntity> DUSTY_MOTH = create(
+            "dusty_moth",
+            EntityType.Builder.create(
+                    MothEntity::new,
+                    SpawnGroup.CREATURE
+            ).dimensions(0.6f, 0.3f)
+    );
     EntityType<PylonEntity> PYLON = create(
             "pylon",
             EntityType.Builder.create(
@@ -50,11 +73,17 @@ public interface PhototaxisEntities {
     static void initialize() {
         // Entities are Registered Statically
         FabricDefaultAttributeRegistry.register(MOTH, MothEntity.createAttribute());
+        FabricDefaultAttributeRegistry.register(MOTH_SATIN, MothEntity.createAttribute());
+        FabricDefaultAttributeRegistry.register(DUSTY_MOTH, MothEntity.createAttribute());
+        FabricDefaultAttributeRegistry.register(MOTH_REDHEAD, MothEntity.createAttribute());
     }
 
     static void clientInit() {
         EntityModelLayerRegistry.registerModelLayer(MothModelEntity.MOTH_MODEL, MothModelEntity::getTexturedModelData);
         EntityRendererRegistry.register(MOTH, MothEntityRenderer::new);
+        EntityRendererRegistry.register(MOTH_SATIN, MothEntityRenderer::new);
+        EntityRendererRegistry.register(MOTH_REDHEAD, MothEntityRenderer::new);
+        EntityRendererRegistry.register(DUSTY_MOTH, MothEntityRenderer::new);
         EntityRendererRegistry.register(PYLON, EmptyEntityRenderer::new);
     }
 }

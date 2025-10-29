@@ -43,6 +43,10 @@ public class MothModelEntity<T extends MothEntity> extends SinglePartEntityModel
 	}
 	@Override
 	public void setAngles(MothEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        this.getPart().traverse().forEach(ModelPart::resetTransform);
+
+        this.animateMovement(MothModelAnimation.fly, limbSwing, limbSwingAmount, 1f, 1.5f);
+        this.updateAnimation(entity.idleAnimState, MothModelAnimation.idle, ageInTicks);
 	}
 
     @Override

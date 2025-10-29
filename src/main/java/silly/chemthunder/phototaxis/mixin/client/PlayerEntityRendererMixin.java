@@ -27,7 +27,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
         if (stack.isOf(PhototaxisItems.FOGLAMP)) {
             cir.setReturnValue(BipedEntityModel.ArmPose.BRUSH);
         }
-        if (stack.isOf(PhototaxisItems.LUNAR_TOTEM)) {
+        if (stack.isOf(PhototaxisItems.MOTH)) {
             cir.setReturnValue(BipedEntityModel.ArmPose.SPYGLASS);
         }
     }
