@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
@@ -39,19 +40,20 @@ public class MothItem extends Item {
                 Hand hand = player.getActiveHand();
                 ItemStack stack = player.getStackInHand(hand);
                 World world = context.getWorld();
-
                 Vec3d spawnPos = context.getHitPos();
 
 
                 //   world.spawnEntity(this.getSend(world, player.getStackInHand(hand), context.getHitPos(), player));
+                if (world instanceof ServerWorld serverWorld) {
+                    if (stack.isOf(PhototaxisItems.MOTH)) {
+                        MothEntity moth = new MothEntity(PhototaxisEntities.MOTH, world);
 
-                if (stack.isOf(PhototaxisItems.MOTH)) {
-                    MothEntity moth = new MothEntity(PhototaxisEntities.MOTH, world);
-
-                    moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-                    moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-                    moth.setSitting(false);
-                    moth.setOwner(player);
+                        moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                        moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                        moth.setSitting(false);
+                        moth.setOwner(player);
+                        serverWorld.spawnEntity(moth);
+                    }
                 }
                 player.setStackInHand(hand, ItemStack.EMPTY);
             }
