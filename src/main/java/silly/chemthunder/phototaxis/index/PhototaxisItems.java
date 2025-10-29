@@ -1,18 +1,15 @@
 package silly.chemthunder.phototaxis.index;
 
-import net.acoyt.acornlib.api.item.AcornItemSettings;
-import net.fabricmc.fabric.api.item.v1.EquipmentSlotProvider;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import silly.chemthunder.phototaxis.Phototaxis;
-import silly.chemthunder.phototaxis.object.entity.moths.MothEntity;
-import silly.chemthunder.phototaxis.object.item.*;
+import silly.chemthunder.phototaxis.object.item.FoglampItem;
+import silly.chemthunder.phototaxis.object.item.MothItem;
+import silly.chemthunder.phototaxis.object.item.MothPeltItem;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

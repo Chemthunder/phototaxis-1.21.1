@@ -11,8 +11,12 @@ import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.Angerable;
+import net.minecraft.entity.mob.HuskEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.VexEntity;
+import net.minecraft.entity.passive.BeeEntity;
+import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,6 +33,8 @@ import org.jetbrains.annotations.Nullable;
 import silly.chemthunder.phototaxis.index.PhototaxisEntities;
 import silly.chemthunder.phototaxis.index.PhototaxisItems;
 import silly.chemthunder.phototaxis.util.PhototaxisConfig;
+
+import java.util.UUID;
 
 public class MothEntity extends TameableEntity implements Flutterer {
     public final AnimationState idleAnimState = new AnimationState();

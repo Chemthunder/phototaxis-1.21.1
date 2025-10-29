@@ -54,6 +54,15 @@ public class MothItem extends Item {
                         moth.setOwner(player);
                         serverWorld.spawnEntity(moth);
                     }
+                    if (stack.isOf(PhototaxisItems.REDHEADED_MOTH)) {
+                        MothEntity moth = new MothEntity(PhototaxisEntities.MOTH_REDHEAD, world);
+
+                        moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                        moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                        moth.setSitting(false);
+                        moth.setOwner(player);
+                        serverWorld.spawnEntity(moth);
+                    }
                 }
                 player.setStackInHand(hand, ItemStack.EMPTY);
             }

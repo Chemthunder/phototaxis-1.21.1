@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import silly.chemthunder.phototaxis.index.PhototaxisItems;
+import silly.chemthunder.phototaxis.index.PhototaxisTags;
 
 @Mixin(PlayerEntityRenderer.class)
 public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> {
@@ -20,14 +21,13 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
         super(ctx, model, shadowRadius);
     }
 
-
     @Inject(method = "getArmPose", at = @At("HEAD"), cancellable = true)
     private static void photo$customArmPoses(AbstractClientPlayerEntity player, Hand hand, CallbackInfoReturnable<BipedEntityModel.ArmPose> cir) {
         ItemStack stack = player.getStackInHand(hand);
         if (stack.isOf(PhototaxisItems.FOGLAMP)) {
             cir.setReturnValue(BipedEntityModel.ArmPose.BRUSH);
         }
-        if (stack.isOf(PhototaxisItems.MOTH)) {
+        if (stack.isIn(PhototaxisTags.MOTHS)) {
             cir.setReturnValue(BipedEntityModel.ArmPose.SPYGLASS);
         }
     }
