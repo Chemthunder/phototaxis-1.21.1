@@ -40,32 +40,43 @@ public class MothItem extends Item {
                 ItemStack stack = player.getStackInHand(hand);
                 World world = context.getWorld();
 
+                Vec3d spawnPos = context.getHitPos();
 
-                world.spawnEntity(this.getSend(world, player.getStackInHand(hand), context.getHitPos(), player));
+
+                //   world.spawnEntity(this.getSend(world, player.getStackInHand(hand), context.getHitPos(), player));
+
+                if (stack.isOf(PhototaxisItems.MOTH)) {
+                    MothEntity moth = new MothEntity(PhototaxisEntities.MOTH, world);
+
+                    moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                    moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                    moth.setSitting(false);
+                    moth.setOwner(player);
+                }
                 player.setStackInHand(hand, ItemStack.EMPTY);
             }
         }
         return super.useOnBlock(context);
     }
-
-    public MothEntity getSend(World world, ItemStack mothStack, Vec3d spawnPos, PlayerEntity player) {
-        if (mothStack.isOf(PhototaxisItems.MOTH)) {
-            MothEntity moth = PhototaxisEntities.MOTH.create(world);
-                assert moth != null;
-                moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-                moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-                moth.setSitting(false);
-            moth.setOwner(player);
-        }
-        if (mothStack.isOf(PhototaxisItems.REDHEADED_MOTH)) {
-            MothEntity moth = PhototaxisEntities.MOTH_REDHEAD.create(world);
-            assert moth != null;
-            moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-            moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-            moth.setSitting(false);
-            moth.setOwner(player);
-        }
-
-        return getSend(world, mothStack, spawnPos, player);
-    }
+//
+//    public MothEntity getSend(World world, ItemStack mothStack, Vec3d spawnPos, PlayerEntity player) {
+//        if (mothStack.isOf(PhototaxisItems.MOTH)) {
+//            MothEntity moth = PhototaxisEntities.MOTH.create(world);
+//            assert moth != null;
+//            moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+//            moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+//            moth.setSitting(false);
+//            moth.setOwner(player);
+//        }
+//        if (mothStack.isOf(PhototaxisItems.REDHEADED_MOTH)) {
+//            MothEntity moth = PhototaxisEntities.MOTH_REDHEAD.create(world);
+//            assert moth != null;
+//            moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+//            moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+//            moth.setSitting(false);
+//            moth.setOwner(player);
+//        }
+//
+//        return ActionResult.;
+//    }
 }
