@@ -30,16 +30,12 @@ public interface PhototaxisItemGroups {
         itemGroup.add(PhototaxisItems.FOGLAMP);
         itemGroup.add(PhototaxisItems.MOTH);
         itemGroup.add(PhototaxisItems.REDHEADED_MOTH);
+        itemGroup.add(PhototaxisItems.SATIN_MOTH);
+        itemGroup.add(PhototaxisItems.DUSTY_MOTH);
         itemGroup.add(PhototaxisItems.MOTH_PELT);
         itemGroup.add(PhototaxisItems.MOTH_SPAWN_EGG);
         itemGroup.add(PhototaxisItems.DUSTY_MOTH_SPAWN_EGG);
         itemGroup.add(PhototaxisItems.REDHEAD_MOTH_SPAWN_EGG);
         itemGroup.add(PhototaxisItems.SATIN_MOTH_SPAWN_EGG);
-
-
-        //testing
-//        itemGroup.add(BulwarkBlocks.BUDDING_KLAPROTH);
-//        itemGroup.add(BulwarkBlocks.OMINOUS_CATALYST);
-//        itemGroup.add(BulwarkItems.DENTIST);
     }
 }

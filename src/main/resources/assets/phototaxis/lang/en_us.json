@@ -1,11 +1,18 @@
 {
   "entity.phototaxis.moth": "Moth",
-  "entity.phototaxis.moth_redhead": "Redheaded Moth",
+  "entity.phototaxis.redhead_moth": "Redheaded Moth",
+  "entity.phototaxis.satin_moth": "Satin Moth",
+  "entity.phototaxis.dusty_moth": "Dusty Moth",
+
 
   "item.phototaxis.jar": "Jar",
   "item.phototaxis.lunar_totem": "Lunar Totem",
-  "item.phototaxis.moth": "Moth",
-  "item.phototaxis.moth.desc": "Wild",
+
+  "item.phototaxis.moth.type": "Wild",
+  "item.phototaxis.redheaded_moth.type": "Redheaded",
+  "item.phototaxis.satin_moth.type": "Satin",
+  "item.phototaxis.dusty_moth.type": "Dusty",
+
   "item.phototaxis.moth_pelt": "Moth Pelt",
 
   "itemgroup.phototaxis": "Phototaxis",
@@ -15,8 +22,14 @@
   "phototaxis.midnightconfig.category.debug": "Debug",
   "phototaxis.midnightconfig.foglampVeilLight": "(Might remove) Veil light for Foglamp",
   "phototaxis.midnightconfig.showMothNames": "Show names of nearby Moths",
+  "phototaxis.midnightconfig.mothSpeed": "Speed of moths (default is 1.5)",
 
   "text.foglamp.debug": "debug foglamp text",
 
-  "item.phototaxis.moth_spawn_egg": "Moth Spawn Egg"
+  "item.phototaxis.moth_spawn_egg": "Moth Spawn Egg",
+  "item.phototaxis.dusty_spawn_egg": "Dusty Moth Spawn Egg",
+  "item.phototaxis.redhead_spawn_egg": "Redheaded Moth Spawn Egg",
+  "item.phototaxis.satin_spawn_egg": "Satin Moth Spawn Egg",
+
+  "item.phototaxis.moth_master": "Moth"
 }

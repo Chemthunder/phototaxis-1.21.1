@@ -30,8 +30,6 @@ public class FoglampItem extends Item {
 
     public static final AreaLightData light = new AreaLightData();
 
-    public boolean useState = true;
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 

@@ -11,6 +11,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import silly.chemthunder.phototaxis.object.entity.moths.MothEntity;
 import silly.chemthunder.phototaxis.util.PhototaxisConfig;
 
 import java.util.List;
@@ -65,7 +66,8 @@ public class PylonEntity extends Entity {
         );
 
         for (LivingEntity entity : entities) {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 100));
+            if (!(entity instanceof MothEntity))
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 100));
         }
         super.tick();
     }

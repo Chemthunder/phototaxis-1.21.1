@@ -1,8 +1,10 @@
 package silly.chemthunder.phototaxis.object.entity.moths;
 
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Flutterer;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
@@ -11,30 +13,34 @@ import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.mob.Angerable;
-import net.minecraft.entity.mob.HuskEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.mob.VexEntity;
-import net.minecraft.entity.passive.BeeEntity;
-import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.screen.AnvilScreenHandler;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.ExplosionBehavior;
 import org.jetbrains.annotations.Nullable;
+import silly.chemthunder.phototaxis.index.PhototaxisDamageSources;
 import silly.chemthunder.phototaxis.index.PhototaxisEntities;
 import silly.chemthunder.phototaxis.index.PhototaxisItems;
 import silly.chemthunder.phototaxis.util.PhototaxisConfig;
 
-import java.util.UUID;
+import java.util.List;
 
 public class MothEntity extends TameableEntity implements Flutterer {
     public final AnimationState idleAnimState = new AnimationState();
@@ -44,10 +50,7 @@ public class MothEntity extends TameableEntity implements Flutterer {
 //    private static final TrackedData<Integer> DATA_ID_TYPE_VARIANT =
 //            DataTracker.registerData(MothEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
-    @Override
-    public boolean isBreedingItem(ItemStack stack) {
-        return false;
-    }
+
 
     @Override
     public @Nullable PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
@@ -62,7 +65,7 @@ public class MothEntity extends TameableEntity implements Flutterer {
     public static DefaultAttributeContainer.Builder createAttribute() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 6)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.5)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, PhototaxisConfig.mothSpeed)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 10)
                 .add(EntityAttributes.GENERIC_JUMP_STRENGTH, 0)
                 .add(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE, 500)
@@ -96,6 +99,13 @@ public class MothEntity extends TameableEntity implements Flutterer {
     }
 
     @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return false;
+    }
+
+    private String newItemName;
+
+    @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
 
@@ -104,6 +114,12 @@ public class MothEntity extends TameableEntity implements Flutterer {
                 ItemStack mof = new ItemStack(PhototaxisItems.MOTH);
                 NbtCompound nbt = new NbtCompound();
                 this.saveNbt(nbt);
+
+                if (this.hasCustomName()) {
+                    Text custom = this.getCustomName();
+                    assert custom != null;
+                    mof.set(DataComponentTypes.CUSTOM_NAME, Text.literal(custom.getString()));
+                }
 
                 if (player.isSneaking()) {
                     player.giveItemStack(mof);
@@ -114,6 +130,44 @@ public class MothEntity extends TameableEntity implements Flutterer {
                 ItemStack mof = new ItemStack(PhototaxisItems.REDHEADED_MOTH);
                 NbtCompound nbt = new NbtCompound();
                 this.saveNbt(nbt);
+
+                if (this.hasCustomName()) {
+                    Text custom = this.getCustomName();
+                    assert custom != null;
+                    mof.set(DataComponentTypes.CUSTOM_NAME, Text.literal(custom.getString()));
+                }
+
+                if (player.isSneaking()) {
+                    player.giveItemStack(mof);
+                    this.discard();
+                }
+            }
+            if (this.getType() == PhototaxisEntities.MOTH_SATIN) {
+                ItemStack mof = new ItemStack(PhototaxisItems.SATIN_MOTH);
+                NbtCompound nbt = new NbtCompound();
+                this.saveNbt(nbt);
+
+                if (this.hasCustomName()) {
+                    Text custom = this.getCustomName();
+                    assert custom != null;
+                    mof.set(DataComponentTypes.CUSTOM_NAME, Text.literal(custom.getString()));
+                }
+
+                if (player.isSneaking()) {
+                    player.giveItemStack(mof);
+                    this.discard();
+                }
+            }
+            if (this.getType() == PhototaxisEntities.DUSTY_MOTH) {
+                ItemStack mof = new ItemStack(PhototaxisItems.DUSTY_MOTH);
+                NbtCompound nbt = new NbtCompound();
+                this.saveNbt(nbt);
+
+                if (this.hasCustomName()) {
+                    Text custom = this.getCustomName();
+                    assert custom != null;
+                    mof.set(DataComponentTypes.CUSTOM_NAME, Text.literal(custom.getString()));
+                }
 
                 if (player.isSneaking()) {
                     player.giveItemStack(mof);
@@ -137,5 +191,24 @@ public class MothEntity extends TameableEntity implements Flutterer {
     @Override
     protected @Nullable SoundEvent getHurtSound(DamageSource source) {
         return SoundEvents.BLOCK_AZALEA_LEAVES_BREAK;
+    }
+
+    @Override
+    public void onRemoved() {
+        if (this.getType() == PhototaxisEntities.DUSTY_MOTH) {
+            Box box = new Box(this.getBlockPos()).expand(5, 5, 5);
+            List<LivingEntity> entities = getWorld().getEntitiesByClass(
+                    LivingEntity.class, box,
+                    entity -> true
+            );
+
+            for (LivingEntity entity : entities) {
+                if (!getWorld().isClient) {
+                    if (!(entity instanceof MothEntity) || entity != this.getOwner())
+                        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 100));
+                }
+            }
+        }
+        super.onRemoved();
     }
 }

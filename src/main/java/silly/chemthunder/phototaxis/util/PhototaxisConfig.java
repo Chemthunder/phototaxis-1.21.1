@@ -14,4 +14,7 @@ public class PhototaxisConfig extends MidnightConfig {
 
     @Entry(category = debug)
     public static boolean showMothNames = true;
+
+    @Entry(category = debug)
+    public static float mothSpeed = 1.5f;
 }

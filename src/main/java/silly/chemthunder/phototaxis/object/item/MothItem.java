@@ -29,7 +29,10 @@ public class MothItem extends Item {
     }
 
     public MutableText getDescription() {
-        return Text.translatable(this.getTranslationKey() + ".desc");
+        return Text.translatable(this.getTranslationKey() + ".type");
+    }
+    public Text getName(ItemStack stack) {
+        return Text.translatable("item.phototaxis.moth_master");
     }
 
     @Override
@@ -41,7 +44,7 @@ public class MothItem extends Item {
                 ItemStack stack = player.getStackInHand(hand);
                 World world = context.getWorld();
                 Vec3d spawnPos = context.getHitPos();
-
+                Text name = stack.getName();
 
                 //   world.spawnEntity(this.getSend(world, player.getStackInHand(hand), context.getHitPos(), player));
                 if (world instanceof ServerWorld serverWorld) {
@@ -52,6 +55,7 @@ public class MothItem extends Item {
                         moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
                         moth.setSitting(false);
                         moth.setOwner(player);
+                        moth.setCustomName(name);
                         serverWorld.spawnEntity(moth);
                     }
                     if (stack.isOf(PhototaxisItems.REDHEADED_MOTH)) {
@@ -61,6 +65,27 @@ public class MothItem extends Item {
                         moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
                         moth.setSitting(false);
                         moth.setOwner(player);
+                        moth.setCustomName(name);
+                        serverWorld.spawnEntity(moth);
+                    }
+                    if (stack.isOf(PhototaxisItems.SATIN_MOTH)) {
+                        MothEntity moth = new MothEntity(PhototaxisEntities.MOTH_SATIN, world);
+
+                        moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                        moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                        moth.setSitting(false);
+                        moth.setOwner(player);
+                        moth.setCustomName(name);
+                        serverWorld.spawnEntity(moth);
+                    }
+                    if (stack.isOf(PhototaxisItems.DUSTY_MOTH)) {
+                        MothEntity moth = new MothEntity(PhototaxisEntities.DUSTY_MOTH, world);
+
+                        moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                        moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
+                        moth.setSitting(false);
+                        moth.setOwner(player);
+                        moth.setCustomName(name);
                         serverWorld.spawnEntity(moth);
                     }
                 }

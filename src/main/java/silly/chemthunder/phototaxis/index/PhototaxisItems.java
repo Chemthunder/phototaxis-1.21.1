@@ -38,15 +38,25 @@ public interface PhototaxisItems {
             .equipmentSlot((livingEntity, itemStack) -> EquipmentSlot.HEAD)
     ));
 
+    Item SATIN_MOTH = create("satin_moth", new MothItem(new Item.Settings()
+            .maxCount(1)
+            .equipmentSlot((livingEntity, itemStack) -> EquipmentSlot.HEAD)
+    ));
+
+    Item DUSTY_MOTH = create("dusty_moth", new MothItem(new Item.Settings()
+            .maxCount(1)
+            .equipmentSlot((livingEntity, itemStack) -> EquipmentSlot.HEAD)
+    ));
+
     Item MOTH_PELT = create("moth_pelt", new MothPeltItem(new Item.Settings()));
 
     Item MOTH_SPAWN_EGG = create("moth_spawn_egg", new SpawnEggItem(PhototaxisEntities.MOTH, 0x4a3f20, 0x706034, new Item.Settings()));
 
-    Item SATIN_MOTH_SPAWN_EGG = create("satin_spawn_egg", new SpawnEggItem(PhototaxisEntities.MOTH_SATIN, 0x4a3f20, 0x706034, new Item.Settings()));
+    Item SATIN_MOTH_SPAWN_EGG = create("satin_spawn_egg", new SpawnEggItem(PhototaxisEntities.MOTH_SATIN, 0xdccfaf, 0xaca48f, new Item.Settings()));
 
-    Item REDHEAD_MOTH_SPAWN_EGG = create("redhead_spawn_egg", new SpawnEggItem(PhototaxisEntities.MOTH_REDHEAD, 0x4a3f20, 0x706034, new Item.Settings()));
+    Item REDHEAD_MOTH_SPAWN_EGG = create("redhead_spawn_egg", new SpawnEggItem(PhototaxisEntities.MOTH_REDHEAD, 0xa13c34, 0x4c3939, new Item.Settings()));
 
-    Item DUSTY_MOTH_SPAWN_EGG = create("dusty_spawn_egg", new SpawnEggItem(PhototaxisEntities.DUSTY_MOTH, 0x4a3f20, 0x706034, new Item.Settings()));
+    Item DUSTY_MOTH_SPAWN_EGG = create("dusty_spawn_egg", new SpawnEggItem(PhototaxisEntities.DUSTY_MOTH, 0xc69c74, 0x90775e, new Item.Settings()));
 
     static <T extends Item> T create(String name, T item) {
         ITEMS.put(item, Phototaxis.id(name));
@@ -55,7 +65,5 @@ public interface PhototaxisItems {
 
     static void initialize() {
         ITEMS.forEach((item, id) -> Registry.register(Registries.ITEM, id, item));
-
-        Phototaxis.LOGGER.info("items have been initialized");
     }
 }
