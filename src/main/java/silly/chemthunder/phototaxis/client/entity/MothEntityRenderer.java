@@ -1,11 +1,11 @@
-package silly.chemthunder.phototaxis.object.entity.moths.client;
+package silly.chemthunder.phototaxis.client.entity;
 
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 import silly.chemthunder.phototaxis.Phototaxis;
-import silly.chemthunder.phototaxis.index.PhototaxisEntities;
-import silly.chemthunder.phototaxis.object.entity.moths.MothEntity;
+import silly.chemthunder.phototaxis.common.index.PhototaxisEntities;
+import silly.chemthunder.phototaxis.common.entity.MothEntity;
 
 public class MothEntityRenderer extends MobEntityRenderer<MothEntity, MothModelEntity<MothEntity>> {
     public MothEntityRenderer(EntityRendererFactory.Context context) {

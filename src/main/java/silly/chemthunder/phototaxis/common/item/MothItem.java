@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.object.item;
+package silly.chemthunder.phototaxis.common.item;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -13,9 +13,9 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import silly.chemthunder.phototaxis.index.PhototaxisEntities;
-import silly.chemthunder.phototaxis.index.PhototaxisItems;
-import silly.chemthunder.phototaxis.object.entity.moths.MothEntity;
+import silly.chemthunder.phototaxis.common.index.PhototaxisEntities;
+import silly.chemthunder.phototaxis.common.index.PhototaxisItems;
+import silly.chemthunder.phototaxis.common.entity.MothEntity;
 
 import java.util.List;
 

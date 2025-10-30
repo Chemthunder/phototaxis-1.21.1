@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.index;
+package silly.chemthunder.phototaxis.common.index;
 
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
@@ -12,10 +12,10 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import silly.chemthunder.phototaxis.Phototaxis;
-import silly.chemthunder.phototaxis.object.entity.PylonEntity;
-import silly.chemthunder.phototaxis.object.entity.moths.MothEntity;
-import silly.chemthunder.phototaxis.object.entity.moths.client.MothEntityRenderer;
-import silly.chemthunder.phototaxis.object.entity.moths.client.MothModelEntity;
+import silly.chemthunder.phototaxis.common.entity.PylonEntity;
+import silly.chemthunder.phototaxis.common.entity.MothEntity;
+import silly.chemthunder.phototaxis.client.entity.MothEntityRenderer;
+import silly.chemthunder.phototaxis.client.entity.MothModelEntity;
 
 public interface PhototaxisEntities {
 //    EntityType<MissileEntity> MISSILE_ENTITY = create(

@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import silly.chemthunder.phototaxis.index.PhototaxisItems;
-import silly.chemthunder.phototaxis.index.PhototaxisTags;
+import silly.chemthunder.phototaxis.common.index.PhototaxisItems;
+import silly.chemthunder.phototaxis.common.index.PhototaxisTags;
 
 @Mixin(PlayerEntityRenderer.class)
 public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> {

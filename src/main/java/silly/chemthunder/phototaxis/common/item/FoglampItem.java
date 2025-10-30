@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.object.item;
+package silly.chemthunder.phototaxis.common.item;
 
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.light.data.AreaLightData;
@@ -16,10 +16,10 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import org.joml.Quaternionf;
-import silly.chemthunder.phototaxis.index.PhototaxisEnchantments;
-import silly.chemthunder.phototaxis.index.PhototaxisEntities;
-import silly.chemthunder.phototaxis.object.entity.PylonEntity;
-import silly.chemthunder.phototaxis.util.PhototaxisConfig;
+import silly.chemthunder.phototaxis.common.index.PhototaxisEnchantments;
+import silly.chemthunder.phototaxis.common.index.PhototaxisEntities;
+import silly.chemthunder.phototaxis.common.entity.PylonEntity;
+import silly.chemthunder.phototaxis.common.util.PhototaxisConfig;
 
 public class FoglampItem extends Item {
     public FoglampItem(Settings settings) {

@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.index;
+package silly.chemthunder.phototaxis.common.index;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;

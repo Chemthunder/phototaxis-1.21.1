@@ -10,7 +10,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import org.spongepowered.asm.mixin.Mixin;
-import silly.chemthunder.phototaxis.object.entity.moths.MothEntity;
+import silly.chemthunder.phototaxis.common.entity.MothEntity;
 
 @Mixin(BookItem.class)
 public abstract class MothIdentifierWithBookMixin extends Item {

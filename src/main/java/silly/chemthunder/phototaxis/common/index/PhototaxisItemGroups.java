@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.index;
+package silly.chemthunder.phototaxis.common.index;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;

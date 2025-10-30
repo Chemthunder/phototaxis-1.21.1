@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.object.entity.moths;
+package silly.chemthunder.phototaxis.common.entity;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.*;
@@ -26,10 +26,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import silly.chemthunder.phototaxis.index.PhototaxisDamageSources;
-import silly.chemthunder.phototaxis.index.PhototaxisEntities;
-import silly.chemthunder.phototaxis.index.PhototaxisItems;
-import silly.chemthunder.phototaxis.util.PhototaxisConfig;
+import silly.chemthunder.phototaxis.common.index.PhototaxisDamageSources;
+import silly.chemthunder.phototaxis.common.index.PhototaxisEntities;
+import silly.chemthunder.phototaxis.common.index.PhototaxisItems;
+import silly.chemthunder.phototaxis.common.util.PhototaxisConfig;
 
 import java.util.List;
 
@@ -52,7 +52,7 @@ public class MothEntity extends TameableEntity implements Flutterer {
     public static DefaultAttributeContainer.Builder createAttribute() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 6)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, PhototaxisConfig.mothSpeed)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.5f)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 10)
                 .add(EntityAttributes.GENERIC_JUMP_STRENGTH, 0)
@@ -127,7 +127,7 @@ public class MothEntity extends TameableEntity implements Flutterer {
                 if (this.hasCustomName()) {
                     Text custom = this.getCustomName();
                     assert custom != null;
-                    mof.set(DataComponentTypes.CUSTOM_NAME, Text.literal(custom.getString()));
+                    mof.set(DataComponentTypes.ITEM_NAME, Text.literal(custom.getString()));
                 }
 
                 if (player.isSneaking()) {
@@ -143,7 +143,7 @@ public class MothEntity extends TameableEntity implements Flutterer {
                 if (this.hasCustomName()) {
                     Text custom = this.getCustomName();
                     assert custom != null;
-                    mof.set(DataComponentTypes.CUSTOM_NAME, Text.literal(custom.getString()));
+                    mof.set(DataComponentTypes.ITEM_NAME, Text.literal(custom.getString()));
                 }
 
                 if (player.isSneaking()) {
@@ -159,7 +159,7 @@ public class MothEntity extends TameableEntity implements Flutterer {
                 if (this.hasCustomName()) {
                     Text custom = this.getCustomName();
                     assert custom != null;
-                    mof.set(DataComponentTypes.CUSTOM_NAME, Text.literal(custom.getString()));
+                    mof.set(DataComponentTypes.ITEM_NAME, Text.literal(custom.getString()));
                 }
 
                 if (player.isSneaking()) {
@@ -175,7 +175,7 @@ public class MothEntity extends TameableEntity implements Flutterer {
                 if (this.hasCustomName()) {
                     Text custom = this.getCustomName();
                     assert custom != null;
-                    mof.set(DataComponentTypes.CUSTOM_NAME, Text.literal(custom.getString()));
+                    mof.set(DataComponentTypes.ITEM_NAME, Text.literal(custom.getString()));
                 }
 
                 if (player.isSneaking()) {

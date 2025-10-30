@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.object.item;
+package silly.chemthunder.phototaxis.common.item;
 
 import net.minecraft.item.Item;
 

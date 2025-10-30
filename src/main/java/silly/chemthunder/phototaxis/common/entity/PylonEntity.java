@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.object.entity;
+package silly.chemthunder.phototaxis.common.entity;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
@@ -11,8 +11,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
-import silly.chemthunder.phototaxis.object.entity.moths.MothEntity;
-import silly.chemthunder.phototaxis.util.PhototaxisConfig;
+import silly.chemthunder.phototaxis.common.util.PhototaxisConfig;
 
 import java.util.List;
 

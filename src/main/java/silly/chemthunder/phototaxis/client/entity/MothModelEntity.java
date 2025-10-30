@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.object.entity.moths.client;
+package silly.chemthunder.phototaxis.client.entity;
 
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
@@ -6,7 +6,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import silly.chemthunder.phototaxis.Phototaxis;
-import silly.chemthunder.phototaxis.object.entity.moths.MothEntity;
+import silly.chemthunder.phototaxis.common.entity.MothEntity;
 
 // Made with Blockbench 5.0.2
 // Exported for Minecraft version 1.17+ for Yarn

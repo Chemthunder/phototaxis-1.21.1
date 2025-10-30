@@ -6,11 +6,11 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import silly.chemthunder.phototaxis.index.PhototaxisEnchantments;
-import silly.chemthunder.phototaxis.index.PhototaxisEntities;
-import silly.chemthunder.phototaxis.index.PhototaxisItemGroups;
-import silly.chemthunder.phototaxis.index.PhototaxisItems;
-import silly.chemthunder.phototaxis.util.PhototaxisConfig;
+import silly.chemthunder.phototaxis.common.index.PhototaxisEnchantments;
+import silly.chemthunder.phototaxis.common.index.PhototaxisEntities;
+import silly.chemthunder.phototaxis.common.index.PhototaxisItemGroups;
+import silly.chemthunder.phototaxis.common.index.PhototaxisItems;
+import silly.chemthunder.phototaxis.common.util.PhototaxisConfig;
 
 public class Phototaxis implements ModInitializer {
 	public static final String MOD_ID = "phototaxis";

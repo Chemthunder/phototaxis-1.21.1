@@ -2,7 +2,7 @@ package silly.chemthunder.phototaxis;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import silly.chemthunder.phototaxis.datagen.PhototaxisItemTagGen;
+import silly.chemthunder.phototaxis.common.datagen.PhototaxisItemTagGen;
 
 public class PhototaxisDataGenerator implements DataGeneratorEntrypoint {
 	@Override

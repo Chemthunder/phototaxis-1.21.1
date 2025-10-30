@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.index;
+package silly.chemthunder.phototaxis.common.index;
 
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;

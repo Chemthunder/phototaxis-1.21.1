@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.object.entity.moths.client;// Save this class in your mod and generate all required imports
+package silly.chemthunder.phototaxis.client.entity;// Save this class in your mod and generate all required imports
 
 import net.minecraft.client.render.entity.animation.Animation;
 import net.minecraft.client.render.entity.animation.AnimationHelper;

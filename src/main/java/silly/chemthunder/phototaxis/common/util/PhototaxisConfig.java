@@ -1,4 +1,4 @@
-package silly.chemthunder.phototaxis.util;
+package silly.chemthunder.phototaxis.common.util;
 
 import eu.midnightdust.lib.config.MidnightConfig;
 
@@ -14,7 +14,4 @@ public class PhototaxisConfig extends MidnightConfig {
 
     @Entry(category = debug)
     public static boolean showMothNames = true;
-
-    @Entry(category = debug)
-    public static float mothSpeed = 1.5f;
 }

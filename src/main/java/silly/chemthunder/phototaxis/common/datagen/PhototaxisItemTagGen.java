@@ -1,10 +1,10 @@
-package silly.chemthunder.phototaxis.datagen;
+package silly.chemthunder.phototaxis.common.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
-import silly.chemthunder.phototaxis.index.PhototaxisItems;
-import silly.chemthunder.phototaxis.index.PhototaxisTags;
+import silly.chemthunder.phototaxis.common.index.PhototaxisItems;
+import silly.chemthunder.phototaxis.common.index.PhototaxisTags;
 
 import java.util.concurrent.CompletableFuture;
 
