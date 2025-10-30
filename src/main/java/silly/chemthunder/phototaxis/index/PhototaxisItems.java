@@ -1,7 +1,10 @@
 package silly.chemthunder.phototaxis.index;
 
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -65,5 +68,12 @@ public interface PhototaxisItems {
 
     static void initialize() {
         ITEMS.forEach((item, id) -> Registry.register(Registries.ITEM, id, item));
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(itemGroup -> {
+            itemGroup.add(MOTH_SPAWN_EGG);
+            itemGroup.add(SATIN_MOTH_SPAWN_EGG);
+            itemGroup.add(REDHEAD_MOTH_SPAWN_EGG);
+            itemGroup.add(DUSTY_MOTH_SPAWN_EGG);
+        });
     }
 }

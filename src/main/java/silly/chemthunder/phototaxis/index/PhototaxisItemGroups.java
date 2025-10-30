@@ -33,9 +33,5 @@ public interface PhototaxisItemGroups {
         itemGroup.add(PhototaxisItems.SATIN_MOTH);
         itemGroup.add(PhototaxisItems.DUSTY_MOTH);
         itemGroup.add(PhototaxisItems.MOTH_PELT);
-        itemGroup.add(PhototaxisItems.MOTH_SPAWN_EGG);
-        itemGroup.add(PhototaxisItems.DUSTY_MOTH_SPAWN_EGG);
-        itemGroup.add(PhototaxisItems.REDHEAD_MOTH_SPAWN_EGG);
-        itemGroup.add(PhototaxisItems.SATIN_MOTH_SPAWN_EGG);
     }
 }

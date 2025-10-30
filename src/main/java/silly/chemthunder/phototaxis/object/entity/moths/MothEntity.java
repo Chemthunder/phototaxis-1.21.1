@@ -1,29 +1,21 @@
 package silly.chemthunder.phototaxis.object.entity.moths;
 
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.entity.AnimationState;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Flutterer;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.goal.LookAroundGoal;
-import net.minecraft.entity.ai.goal.LookAtEntityGoal;
-import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
+import net.minecraft.entity.*;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.HuskEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.screen.AnvilScreenHandler;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -33,7 +25,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.ExplosionBehavior;
 import org.jetbrains.annotations.Nullable;
 import silly.chemthunder.phototaxis.index.PhototaxisDamageSources;
 import silly.chemthunder.phototaxis.index.PhototaxisEntities;
@@ -47,10 +38,6 @@ public class MothEntity extends TameableEntity implements Flutterer {
     public MothEntity(EntityType<? extends TameableEntity> entityType, World world) {
         super(entityType, world);
     }
-//    private static final TrackedData<Integer> DATA_ID_TYPE_VARIANT =
-//            DataTracker.registerData(MothEntity.class, TrackedDataHandlerRegistry.INTEGER);
-
-
 
     @Override
     public @Nullable PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
@@ -59,13 +46,14 @@ public class MothEntity extends TameableEntity implements Flutterer {
 
     @Override
     public boolean isInAir() {
-        return false;
+        return true;
     }
 
     public static DefaultAttributeContainer.Builder createAttribute() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 6)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, PhototaxisConfig.mothSpeed)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 10)
                 .add(EntityAttributes.GENERIC_JUMP_STRENGTH, 0)
                 .add(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE, 500)
@@ -75,6 +63,19 @@ public class MothEntity extends TameableEntity implements Flutterer {
     @Override
     public void onDeath(DamageSource damageSource) {
         dropStack(PhototaxisItems.MOTH_PELT.getDefaultStack());
+        World world = getWorld();
+        if (this.getType() == PhototaxisEntities.DUSTY_MOTH) {
+            Box box = new Box(this.getBlockPos()).expand(5, 5, 5);
+            List<LivingEntity> entities = getWorld().getEntitiesByClass(
+                    LivingEntity.class, box,
+                    entity -> true
+            );
+
+            for (LivingEntity entity : entities) {
+                entity.setAttacker(this.getOwner());
+                entity.damage(PhototaxisDamageSources.moth_explode(this), 4f);
+            }
+        }
         super.onDeath(damageSource);
     }
 
@@ -83,7 +84,15 @@ public class MothEntity extends TameableEntity implements Flutterer {
         this.goalSelector.add(9, new WanderAroundFarGoal(this, 0.25));
         this.goalSelector.add(10, new LookAtEntityGoal(this, PlayerEntity.class, 4));
         this.goalSelector.add(6, new LookAroundGoal(this));
+        this.goalSelector.add(5, new MeleeAttackGoal(this, 0.25F, true));
+        this.goalSelector.add(6, new FollowOwnerGoal(this, 0.25f, 10.0F, 2.0F));
+        this.targetSelector.add(7, new ActiveTargetGoal<>(this, HuskEntity.class, false));
         super.initGoals();
+    }
+
+    @Override
+    public boolean tryAttack(Entity target) {
+        return super.tryAttack(target);
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -100,10 +109,10 @@ public class MothEntity extends TameableEntity implements Flutterer {
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return false;
+        return stack.isIn(ItemTags.LEAVES);
     }
 
-    private String newItemName;
+
 
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
@@ -175,6 +184,11 @@ public class MothEntity extends TameableEntity implements Flutterer {
                 }
             }
         }
+
+        if (stack.isIn(ItemTags.LEAVES)) {
+            this.setTamed(true, false);
+            this.setOwner(player);
+        }
         return super.interactMob(player, hand);
     }
 
@@ -191,24 +205,5 @@ public class MothEntity extends TameableEntity implements Flutterer {
     @Override
     protected @Nullable SoundEvent getHurtSound(DamageSource source) {
         return SoundEvents.BLOCK_AZALEA_LEAVES_BREAK;
-    }
-
-    @Override
-    public void onRemoved() {
-        if (this.getType() == PhototaxisEntities.DUSTY_MOTH) {
-            Box box = new Box(this.getBlockPos()).expand(5, 5, 5);
-            List<LivingEntity> entities = getWorld().getEntitiesByClass(
-                    LivingEntity.class, box,
-                    entity -> true
-            );
-
-            for (LivingEntity entity : entities) {
-                if (!getWorld().isClient) {
-                    if (!(entity instanceof MothEntity) || entity != this.getOwner())
-                        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 100));
-                }
-            }
-        }
-        super.onRemoved();
     }
 }
