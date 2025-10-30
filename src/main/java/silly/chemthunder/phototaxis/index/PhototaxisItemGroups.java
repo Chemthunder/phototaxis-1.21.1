@@ -14,13 +14,13 @@ import silly.chemthunder.phototaxis.Phototaxis;
 
 public interface PhototaxisItemGroups {
     RegistryKey<ItemGroup> GROUP_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, Phototaxis.id("phototaxis"));
-    ItemGroup ITEM_GROUP = FabricItemGroup.builder()
+    ItemGroup A_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(PhototaxisItems.MOTH))
             .displayName(Text.translatable("itemgroup.phototaxis"))
             .build();
 
     static void initialize() {
-        Registry.register(Registries.ITEM_GROUP, GROUP_KEY, ITEM_GROUP);
+        Registry.register(Registries.ITEM_GROUP, GROUP_KEY, A_GROUP);
 
         ItemGroupEvents.modifyEntriesEvent(GROUP_KEY).register(PhototaxisItemGroups::addEntries);
 
