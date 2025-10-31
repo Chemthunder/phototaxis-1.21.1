@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "phototaxis:moth"
+    },
+    "title": {
+      "translate": "advancement.photo.obtain_moth"
+    },
+    "description": {
+      "translate": "advancement.photo.obtain_moth.desc"
+    },
+    "frame": "task",
+    "announce_to_chat": true
+  },
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "obtain_a_moth": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "phototaxis:moth",
+              "phototaxis:redheaded_moth",
+              "phototaxis:satin_moth",
+              "phototaxis:dusty_moth"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_a_moth"
+    ]
+  ]
+}

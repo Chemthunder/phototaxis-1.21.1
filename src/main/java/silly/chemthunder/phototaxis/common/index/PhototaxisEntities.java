@@ -17,6 +17,7 @@ import silly.chemthunder.phototaxis.common.entity.MothEntity;
 import silly.chemthunder.phototaxis.client.entity.MothEntityRenderer;
 import silly.chemthunder.phototaxis.client.entity.MothModelEntity;
 
+@SuppressWarnings("data fixer")
 public interface PhototaxisEntities {
 //    EntityType<MissileEntity> MISSILE_ENTITY = create(
 //            "magic_missile",

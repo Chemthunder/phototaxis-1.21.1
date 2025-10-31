@@ -10,8 +10,5 @@ public class PhototaxisConfig extends MidnightConfig {
     public static boolean applyParticles = true;
 
     @Entry(category = debug)
-    public static boolean foglampVeilLight = false;
-
-    @Entry(category = debug)
     public static boolean showMothNames = true;
 }

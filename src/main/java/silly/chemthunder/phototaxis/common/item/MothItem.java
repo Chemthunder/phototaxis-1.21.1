@@ -31,6 +31,7 @@ public class MothItem extends Item {
     public MutableText getDescription() {
         return Text.translatable(this.getTranslationKey() + ".type");
     }
+
     public Text getName(ItemStack stack) {
         return Text.translatable("item.phototaxis.moth_master");
     }
@@ -94,25 +95,4 @@ public class MothItem extends Item {
         }
         return super.useOnBlock(context);
     }
-//
-//    public MothEntity getSend(World world, ItemStack mothStack, Vec3d spawnPos, PlayerEntity player) {
-//        if (mothStack.isOf(PhototaxisItems.MOTH)) {
-//            MothEntity moth = PhototaxisEntities.MOTH.create(world);
-//            assert moth != null;
-//            moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-//            moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-//            moth.setSitting(false);
-//            moth.setOwner(player);
-//        }
-//        if (mothStack.isOf(PhototaxisItems.REDHEADED_MOTH)) {
-//            MothEntity moth = PhototaxisEntities.MOTH_REDHEAD.create(world);
-//            assert moth != null;
-//            moth.updatePosition(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-//            moth.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-//            moth.setSitting(false);
-//            moth.setOwner(player);
-//        }
-//
-//        return ActionResult.;
-//    }
 }

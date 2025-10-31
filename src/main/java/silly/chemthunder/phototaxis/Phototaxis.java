@@ -3,14 +3,20 @@ package silly.chemthunder.phototaxis;
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.acoyt.acornlib.api.ALib;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTables;
+import net.minecraft.loot.condition.RandomChanceLootCondition;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import silly.chemthunder.phototaxis.common.index.PhototaxisEnchantments;
 import silly.chemthunder.phototaxis.common.index.PhototaxisEntities;
 import silly.chemthunder.phototaxis.common.index.PhototaxisItemGroups;
 import silly.chemthunder.phototaxis.common.index.PhototaxisItems;
 import silly.chemthunder.phototaxis.common.util.PhototaxisConfig;
+import silly.chemthunder.phototaxis.common.util.PhototaxisEntitySpawners;
 
 public class Phototaxis implements ModInitializer {
 	public static final String MOD_ID = "phototaxis";
@@ -23,14 +29,25 @@ public class Phototaxis implements ModInitializer {
 	public void onInitialize() {
         PhototaxisItems.initialize();
         PhototaxisEntities.initialize();
-        PhototaxisEnchantments.initialize();
         PhototaxisItemGroups.initialize();
-
+        PhototaxisEntitySpawners.initialize();
 
         // modmenu
         MidnightConfig.init(MOD_ID, PhototaxisConfig.class);
         ALib.registerModMenu(MOD_ID, 0x274f2b);
 
 		LOGGER.debug("Phototaxis implementation debug environment begun");
+
+        // loot tables
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, registry) -> {
+            if (LootTables.SIMPLE_DUNGEON_CHEST.equals(key)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(UniformLootNumberProvider.create(1.0F, 1.0F))
+                        .conditionally(RandomChanceLootCondition.builder(0.5F))
+                        .with(ItemEntry.builder(PhototaxisItems.FOGLAMP));
+
+                tableBuilder.pool(poolBuilder);
+            }
+        });
 	}
 }

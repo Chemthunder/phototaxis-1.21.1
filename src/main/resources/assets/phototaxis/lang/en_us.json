@@ -1,4 +1,6 @@
 {
+  "advancement.photo.obtain_moth": "Moondrunk-Madness",
+  "advancement.photo.obtain_moth.desc": "Befriend a creature of the night",
   "death.attack.moth_explode": "%1$s wheezed to death",
   "death.attack.moth_explode.player": "%1$s wheezed to death whilst fighting %2$s",
   "entity.phototaxis.dusty_moth": "Dusty Moth",
@@ -19,8 +21,6 @@
   "phototaxis.midnightconfig.applyParticles": "Increased Pylon particle movement (Client Side)",
   "phototaxis.midnightconfig.category.config": "Phototaxis",
   "phototaxis.midnightconfig.category.debug": "Debug",
-  "phototaxis.midnightconfig.foglampVeilLight": "(Might remove) Veil light for Foglamp",
-  "phototaxis.midnightconfig.mothSpeed": "Speed of moths (default is 1.5)",
   "phototaxis.midnightconfig.showMothNames": "Show names of nearby Moths",
   "text.foglamp.debug": "debug foglamp text"
 }
