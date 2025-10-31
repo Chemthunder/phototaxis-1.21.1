@@ -7,8 +7,11 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import silly.chemthunder.phototaxis.common.util.PhototaxisConfig;
@@ -69,5 +72,11 @@ public class PylonEntity extends Entity {
                 entity.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 100));
         }
         super.tick();
+    }
+
+    @Override
+    public ActionResult interact(PlayerEntity player, Hand hand) {
+
+        return super.interact(player, hand);
     }
 }

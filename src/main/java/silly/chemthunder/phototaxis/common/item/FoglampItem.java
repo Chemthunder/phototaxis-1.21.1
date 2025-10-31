@@ -3,6 +3,7 @@ package silly.chemthunder.phototaxis.common.item;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
@@ -10,6 +11,7 @@ import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import silly.chemthunder.phototaxis.common.entity.PylonEntity;
 import silly.chemthunder.phototaxis.common.index.PhototaxisEntities;
+import silly.chemthunder.phototaxis.common.index.PhototaxisItems;
 
 public class FoglampItem extends Item {
     public FoglampItem(Settings settings) {
@@ -26,6 +28,7 @@ public class FoglampItem extends Item {
                     hitPos.getZ() + 0.5f
             );
             world.spawnEntity(pylon);
+            user.getItemCooldownManager().set(PhototaxisItems.FOGLAMP, 180);
         return super.use(world, user, hand);
     }
 
