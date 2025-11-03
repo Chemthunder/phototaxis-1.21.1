@@ -21,6 +21,5 @@
   "phototaxis.midnightconfig.applyParticles": "Increased Pylon particle movement (Client Side)",
   "phototaxis.midnightconfig.category.config": "Phototaxis",
   "phototaxis.midnightconfig.category.debug": "Debug",
-  "phototaxis.midnightconfig.showMothNames": "Show names of nearby Moths",
-  "text.foglamp.debug": "debug foglamp text"
+  "phototaxis.midnightconfig.showMothNames": "Show names of nearby Moths"
 }

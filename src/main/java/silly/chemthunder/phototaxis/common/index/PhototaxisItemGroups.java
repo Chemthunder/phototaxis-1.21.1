@@ -27,7 +27,6 @@ public interface PhototaxisItemGroups {
     }
 
     private static void addEntries(FabricItemGroupEntries itemGroup) {
-        itemGroup.add(PhototaxisItems.FOGLAMP);
         itemGroup.add(PhototaxisItems.MOTH);
         itemGroup.add(PhototaxisItems.REDHEADED_MOTH);
         itemGroup.add(PhototaxisItems.SATIN_MOTH);

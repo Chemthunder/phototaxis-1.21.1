@@ -37,17 +37,5 @@ public class Phototaxis implements ModInitializer {
         ALib.registerModMenu(MOD_ID, 0x274f2b);
 
 		LOGGER.debug("Phototaxis implementation debug environment begun");
-
-        // loot tables
-        LootTableEvents.MODIFY.register((key, tableBuilder, source, registry) -> {
-            if (LootTables.SIMPLE_DUNGEON_CHEST.equals(key)) {
-                LootPool.Builder poolBuilder = LootPool.builder()
-                        .rolls(UniformLootNumberProvider.create(1.0F, 1.0F))
-                        .conditionally(RandomChanceLootCondition.builder(0.5F))
-                        .with(ItemEntry.builder(PhototaxisItems.FOGLAMP));
-
-                tableBuilder.pool(poolBuilder);
-            }
-        });
 	}
 }

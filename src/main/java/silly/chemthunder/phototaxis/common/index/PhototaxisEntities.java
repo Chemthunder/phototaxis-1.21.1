@@ -12,7 +12,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import silly.chemthunder.phototaxis.Phototaxis;
-import silly.chemthunder.phototaxis.common.entity.PylonEntity;
 import silly.chemthunder.phototaxis.common.entity.MothEntity;
 import silly.chemthunder.phototaxis.client.entity.MothEntityRenderer;
 import silly.chemthunder.phototaxis.client.entity.MothModelEntity;
@@ -58,13 +57,6 @@ public interface PhototaxisEntities {
                     SpawnGroup.CREATURE
             ).dimensions(0.6f, 0.3f)
     );
-    EntityType<PylonEntity> PYLON = create(
-            "pylon",
-            EntityType.Builder.create(
-                    PylonEntity::new,
-                    SpawnGroup.MISC
-            ).dimensions(0.3f, 0.8f)
-    );
 
     static <T extends Entity> EntityType<T> create(String name, EntityType.Builder<T> builder) {
         RegistryKey<EntityType<?>> key = RegistryKey.of(RegistryKeys.ENTITY_TYPE, Phototaxis.id(name));
@@ -85,6 +77,5 @@ public interface PhototaxisEntities {
         EntityRendererRegistry.register(MOTH_SATIN, MothEntityRenderer::new);
         EntityRendererRegistry.register(MOTH_REDHEAD, MothEntityRenderer::new);
         EntityRendererRegistry.register(DUSTY_MOTH, MothEntityRenderer::new);
-        EntityRendererRegistry.register(PYLON, EmptyEntityRenderer::new);
     }
 }
